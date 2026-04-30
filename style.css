@@ -282,22 +282,35 @@ ul { list-style: none; }
 }
 
 /* ---------- Tab panels ---------- */
-.tab-panel { display: none; animation: fadeUp 0.4s ease both; }
-.tab-panel.active { display: block; }
+.tab-panel { 
+  display: none; 
+  animation: fadeUp 0.4s ease both; 
+}
+
+/* This is the fix: change 'block' to 'grid' specifically for the experience tab */
+#experience.active { 
+  display: grid; 
+  grid-template-columns: 1fr 1fr; /* Creates the two side-by-side columns */
+  gap: 2.5rem; 
+  align-items: start;
+}
+
+/* Keep other tabs as block if they don't have the exp-grid class */
+.tab-panel.active:not(.exp-grid) {
+  display: block;
+}
+
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-.panel-header { margin-bottom: 1.75rem; }
-.panel-tag { font-family: var(--font-mono); color: var(--accent); font-size: 0.85rem; }
-.panel-header h2 {
-  font-size: clamp(1.7rem, 3vw, 2.2rem);
-  font-weight: 700; letter-spacing: -0.01em;
-  margin: 0.2rem 0 0.4rem;
+/* Mobile Fix: Stack columns on smaller screens */
+@media (max-width: 900px) {
+  #experience.active {
+    grid-template-columns: 1fr;
+  }
 }
-.panel-sub { color: var(--text-dim); }
-
 
 /* ---------- Cards ---------- */
 .card {
