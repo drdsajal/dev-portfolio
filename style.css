@@ -230,13 +230,18 @@ ul { list-style: none; }
   box-shadow: 0 0 0 4px rgba(56,189,248,0.15);
   object-fit: cover;
   background: var(--surface-2);
-}
+#}
+#.avatar-fallback {
+  #display: flex; align-items: center; justify-content: center;
+  #font-family: var(--font-mono); font-size: 2.4rem; font-weight: 700;
+  #color: var(--accent);
+  #background: linear-gradient(135deg, #16213a, #0f172a);
+#}
+
 .avatar-fallback {
-  display: none; align-items: center; justify-content: center;
-  font-family: var(--font-mono); font-size: 2.4rem; font-weight: 700;
-  color: var(--accent);
-  background: linear-gradient(135deg, #16213a, #0f172a);
+  display: none; /* This is the fastest way to hide the overlap */
 }
+
 .online-badge {
   position: absolute; right: 6px; bottom: 6px;
   width: 14px; height: 14px; border-radius: 50%;
