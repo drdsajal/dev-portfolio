@@ -131,7 +131,6 @@
   /* ---------- Footer year ---------- */
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
-document.getElementById("year").textContent = new Date().getFullYear();
 
   /* ---------- IntersectionObserver — animate cards on view ---------- */
   const observer = new IntersectionObserver(
