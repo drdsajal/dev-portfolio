@@ -633,6 +633,15 @@ ul { list-style: none; }
 .footer-links a:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
 .footer-links i { width: 17px; height: 17px; }
 
+.footer-links i {
+  width: 22px;
+  height: 22px;
+}
+
+.footer-links a {
+  margin: 0 10px;
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   .top-nav, .header-cta { display: none; }
