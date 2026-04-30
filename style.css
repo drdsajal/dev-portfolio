@@ -642,6 +642,17 @@ ul { list-style: none; }
   margin: 0 10px;
 }
 
+.icon {
+  width: 24px;
+  height: 24px;
+  stroke: #58a6ff;
+}
+
+.footer-links a {
+  margin: 0 10px;
+  display: inline-block;
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   .top-nav, .header-cta { display: none; }
