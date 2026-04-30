@@ -282,35 +282,21 @@ ul { list-style: none; }
 }
 
 /* ---------- Tab panels ---------- */
-.tab-panel { 
-  display: none; 
-  animation: fadeUp 0.4s ease both; 
-}
-
-/* This is the fix: change 'block' to 'grid' specifically for the experience tab */
-#experience.active { 
-  display: grid; 
-  grid-template-columns: 1fr 1fr; /* Creates the two side-by-side columns */
-  gap: 2.5rem; 
-  align-items: start;
-}
-
-/* Keep other tabs as block if they don't have the exp-grid class */
-.tab-panel.active:not(.exp-grid) {
-  display: block;
-}
-
+.tab-panel { display: none; animation: fadeUp 0.4s ease both; }
+.tab-panel.active { display: block; }
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Mobile Fix: Stack columns on smaller screens */
-@media (max-width: 900px) {
-  #experience.active {
-    grid-template-columns: 1fr;
-  }
+.panel-header { margin-bottom: 1.75rem; }
+.panel-tag { font-family: var(--font-mono); color: var(--accent); font-size: 0.85rem; }
+.panel-header h2 {
+  font-size: clamp(1.7rem, 3vw, 2.2rem);
+  font-weight: 700; letter-spacing: -0.01em;
+  margin: 0.2rem 0 0.4rem;
 }
+.panel-sub { color: var(--text-dim); }
 
 /* ---------- Cards ---------- */
 .card {
@@ -534,35 +520,67 @@ ul { list-style: none; }
 }
 .project-footer i { width: 15px; height: 15px; color: var(--accent); }
 
-/* ---------- Experience tab: two-column grid ---------- */
-/* This targets the <section> tag itself */
-.tab-panel.exp-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* Force 2 columns */
-  gap: 3rem;
-  align-items: start;
-  width: 100%;
+/* ---------- Experience timeline ---------- */
+.timeline { position: relative; padding-left: 1.75rem; }
+.timeline::before {
+  content: ''; position: absolute;
+  top: 0; bottom: 0; left: 13px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent) 0%, transparent 100%);
+  opacity: 0.4;
+}
+.tl-item { position: relative; margin-bottom: 2rem; }
+.tl-item:last-child { margin-bottom: 0; }
+.tl-dot {
+  position: absolute; left: -1.75rem; top: 0;
+  width: 28px; height: 28px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--bg-0);
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(56,189,248,0.12);
+}
+.tl-dot i { width: 13px; height: 13px; }
+.tl-content {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.4rem;
+  margin-left: 0.85rem;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.tl-content:hover { border-color: var(--border-strong); transform: translateX(3px); }
+.tl-head {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  flex-wrap: wrap; gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+.tl-content h3 { font-size: 1.08rem; font-weight: 600; }
+.tl-time {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 0.25rem 0.6rem;
+  background: rgba(56,189,248,0.08);
+  color: var(--accent);
+  border: 1px solid rgba(56,189,248,0.2);
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.tl-org { color: var(--text-dim); font-size: 0.92rem; margin-bottom: 0.7rem; font-style: italic; }
+.promo {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 0.18rem 0.5rem;
+  background: rgba(52,211,153,0.12);
+  color: var(--ok);
+  border: 1px solid rgba(52,211,153,0.25);
+  border-radius: 6px;
+  margin-left: 0.4rem;
+  vertical-align: middle;
 }
 
-/* Ensure the top header (Experience & Education) spans BOTH columns */
-.exp-grid .panel-header {
-  grid-column: 1 / -1; 
-  margin-bottom: 2.5rem;
-}
-
-/* IMPORTANT: If you have a separate div inside the section, use this: */
-.exp-grid-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  width: 100%;
-}
-
-@media (max-width: 900px) {
-  .tab-panel.exp-grid, .exp-grid-container {
-    grid-template-columns: 1fr; /* Stack on mobile */
-  }
-}
 /* ---------- Footer ---------- */
 .site-footer {
   border-top: 1px solid var(--border);
