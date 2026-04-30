@@ -557,65 +557,26 @@ ul { list-style: none; }
   letter-spacing: -0.01em;
 }
 
-/* ---------- Experience timeline ---------- */
-.timeline { position: relative; padding-left: 1.75rem; }
-.timeline::before {
-  content: ''; position: absolute;
-  top: 0; bottom: 0; left: 13px;
-  width: 2px;
-  background: linear-gradient(180deg, var(--accent) 0%, transparent 100%);
-  opacity: 0.4;
+/* This forces the two columns to sit side-by-side */
+.exp-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 1fr for Left, 1fr for Right */
+  gap: 3rem;
+  align-items: start;
+  width: 100%;
 }
-.tl-item { position: relative; margin-bottom: 2rem; }
-.tl-item:last-child { margin-bottom: 0; }
-.tl-dot {
-  position: absolute; left: -1.75rem; top: 0;
-  width: 28px; height: 28px;
-  display: flex; align-items: center; justify-content: center;
-  background: var(--bg-0);
-  border: 2px solid var(--accent);
-  border-radius: 50%;
-  color: var(--accent);
-  box-shadow: 0 0 0 4px rgba(56,189,248,0.12);
+
+/* Ensure the top header takes up the full width */
+.panel-header {
+  grid-column: 1 / -1; 
+  margin-bottom: 2.5rem;
 }
-.tl-dot i { width: 13px; height: 13px; }
-.tl-content {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.25rem 1.4rem;
-  margin-left: 0.85rem;
-  transition: border-color 0.2s ease, transform 0.2s ease;
-}
-.tl-content:hover { border-color: var(--border-strong); transform: translateX(3px); }
-.tl-head {
-  display: flex; justify-content: space-between; align-items: flex-start;
-  flex-wrap: wrap; gap: 0.5rem;
-  margin-bottom: 0.25rem;
-}
-.tl-content h3 { font-size: 1.08rem; font-weight: 600; }
-.tl-time {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  padding: 0.25rem 0.6rem;
-  background: rgba(56,189,248,0.08);
-  color: var(--accent);
-  border: 1px solid rgba(56,189,248,0.2);
-  border-radius: 999px;
-  white-space: nowrap;
-}
-.tl-org { color: var(--text-dim); font-size: 0.92rem; margin-bottom: 0.7rem; font-style: italic; }
-.promo {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  padding: 0.18rem 0.5rem;
-  background: rgba(52,211,153,0.12);
-  color: var(--ok);
-  border: 1px solid rgba(52,211,153,0.25);
-  border-radius: 6px;
-  margin-left: 0.4rem;
-  vertical-align: middle;
+
+/* Mobile responsive: stack them vertically on small screens */
+@media (max-width: 900px) {
+  .exp-grid-container {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ---------- Footer ---------- */
