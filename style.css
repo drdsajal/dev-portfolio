@@ -232,7 +232,7 @@ ul { list-style: none; }
   background: var(--surface-2);
 }
 .avatar-fallback {
-  display: flex; align-items: center; justify-content: center;
+  display: none; align-items: center; justify-content: center;
   font-family: var(--font-mono); font-size: 2.4rem; font-weight: 700;
   color: var(--accent);
   background: linear-gradient(135deg, #16213a, #0f172a);
